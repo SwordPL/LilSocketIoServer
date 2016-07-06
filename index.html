@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <p id='server-time'></p>
+    <p id='msg'></p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var el = document.getElementById('server-time');
+      socket.on('time', function(timeString) {
+        el.innerHTML = 'Server time: ' + timeString;
+      });
+      var el2 = document.getElementById('msg');
+      socket.on('test', function(msg) { el2.innerHTML = msg });
+    </script>
+  </body>
+</html>
